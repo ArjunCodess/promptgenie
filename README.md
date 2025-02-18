@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PromptGenie: System Prompt Generator
 
-## Getting Started
+A web application for generating effective system prompts for your AI applications.  This tool allows you to specify various parameters to fine-tune the generated prompt, ensuring it aligns perfectly with your AI application's needs.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+* **Customizable Prompt Generation:**  Generate system prompts tailored to your specific requirements.
+* **Parameter Control:** Adjust parameters such as tone, complexity, format, number of examples, and constraints to refine the output.
+* **User-Friendly Interface:**  An intuitive web interface simplifies the prompt generation process.
+* **Real-time Feedback:**  Immediate feedback on prompt generation status.
+* **Clipboard Integration:** Easily copy the generated prompt to your clipboard.
+* **Error Handling:** Robust error handling ensures a smooth user experience.
+
+## Usage
+
+1. **Input Prompt:** Enter a description of the task you want your AI system to perform in the provided text area.
+2. **Parameter Selection:** Choose desired parameters (tone, complexity, format, examples, constraints) from the dropdown menus.
+3. **Generate Prompt:** Click the "Generate Prompt" button to initiate the prompt generation process.
+4. **Copy to Clipboard:** Use the copy icon to copy the generated prompt.
+5. **Regenerate Prompt:** Use the refresh icon to regenerate the prompt with the current parameters.
+
+## Installation
+
+This project is a Next.js application and requires Node.js and npm (or yarn) to run.
+
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd system-prompt-generator
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Set up environment variables:  Create a `.env.local` file in the root directory and add your `GEMINI_AI_API` key:
+   ```
+   GEMINI_AI_API=<your_api_key>
+   ```
+5. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Technologies Used
+
+* **Next.js:**  A React framework for building user interfaces. Used for the front-end development.
+* **React:** A JavaScript library for building user interfaces. Used for building the UI components.
+* **Tailwind CSS:**  A utility-first CSS framework for rapid UI development.  Used for styling the application.
+* **@google/generative-ai:** Google's client library for interacting with Generative AI models. Used to communicate with the Gemini AI model.
+* **TypeScript:**  A superset of JavaScript that adds static typing. Improves code maintainability and reduces runtime errors.
+* **Lucide-React:** A collection of React icons. Used for visual elements in the UI.
+* **Sonner:**  A toast notification library. Provides feedback to the user.
+
+
+## API Documentation
+
+**Endpoint:** `/api/generate`
+
+**Method:** `POST`
+
+**Request Body:**
+
+```json
+{
+  "prompt": "Summarize the plot of Hamlet.",
+  "parameters": {
+    "tone": "professional",
+    "complexity": "intermediate",
+    "format": "concise",
+    "examples": "few",
+    "constraints": "moderate"
+  }
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Response Body (Success):**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```json
+{
+  "completion": "Generated system prompt for summarizing Hamlet..."
+}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Response Body (Error):**
 
-## Learn More
+```json
+{
+  "error": "Error message",
+  "status": 500 
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Dependencies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The project's dependencies are listed in the `package.json` file.  They include libraries for UI development, AI interaction, and utility functions.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contributions are welcome! Please open an issue or submit a pull request.
+
+
+## Testing
+
+No dedicated testing framework is included in this example.  Adding tests would enhance the robustness of the application.
+
+
+
+*README.md was made with [Etchr](https://etchr.dev)*
